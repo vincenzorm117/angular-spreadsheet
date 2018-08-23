@@ -59,11 +59,48 @@ export class TableSpreadsheetComponent implements OnInit, OnChanges {
     this.focused = false;
   }
 
-  
+  ///////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////
+  // 
+
   @HostListener('document:keyup', ['$event'])
-  onkeyup(event: KeyboardEvent){
-    console.log(event)
+  onkeyup(event: KeyboardEvent){}
+
+  @HostListener('document:keyup.arrowup', ['$event'])
+  onKeyupArrowUp(event: KeyboardEvent){
+    this.selectionStartRow = Math.max(0, this.selectionStartRow - 1)
+    this.selectionEndRow = this.selectionStartRow;
+    this.selectionEndCol = this.selectionStartCol;
+    this.updateSelection();
   }
+
+  @HostListener('document:keyup.arrowdown', ['$event'])
+  onKeyupArrowDown(event: KeyboardEvent){
+    this.selectionStartRow = Math.min(this.selectionStartRow + 1, this.rowHeights.length-2)
+    this.selectionEndRow = this.selectionStartRow;
+    this.selectionEndCol = this.selectionStartCol;
+    this.updateSelection();
+  }
+
+  @HostListener('document:keyup.arrowleft', ['$event'])
+  onKeyupArrowLeft(event: KeyboardEvent){
+    this.selectionStartCol = Math.max(0, this.selectionStartCol - 1);
+    this.selectionEndCol = this.selectionStartCol;
+    this.selectionEndRow = this.selectionStartRow;
+    this.updateSelection();
+  }
+
+  @HostListener('document:keyup.arrowright', ['$event'])
+  onKeyupArrowRight(event: KeyboardEvent){
+    this.selectionStartCol = Math.min(this.selectionStartCol + 1, this.columnWidths.length-1);
+    this.selectionEndCol = this.selectionStartCol;
+    this.selectionEndRow = this.selectionStartRow;
+    this.updateSelection();
+  }
+
+
+  ///////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////
 
 
 
