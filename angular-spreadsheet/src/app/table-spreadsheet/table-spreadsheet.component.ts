@@ -145,7 +145,6 @@ export class TableSpreadsheetComponent implements OnInit, OnChanges {
 
     this.predictiveX = this.selectionOffsetX + this.selectionWidth;
     this.predictiveY = this.selectionOffsetY + this.selectionHeight;
-
   }
 
 }

@@ -882,6 +882,10 @@ tr.hidden th{
 }
 
 
+td.active {
+    background: rgba(#005eff, 0.1);
+}
+
 
 th .sort {
     display: inline-block;

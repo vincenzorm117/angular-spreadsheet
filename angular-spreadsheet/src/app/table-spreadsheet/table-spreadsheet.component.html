@@ -27,14 +27,14 @@
     </tr>
   </tbody>
 </table>
-<div class="selection" *ngIf="true || focused"
+<div class="selection" *ngIf="focused"
     [style.left.px]="selectionOffsetX"
     [style.top.px]="selectionOffsetY"
     [style.width.px]="selectionWidth"
     [style.height.px]="selectionHeight"
 >
 </div>
-<div class="btn-predictive"
+<div class="btn-predictive" *ngIf="focused"
     [style.left.px]="predictiveX"
     [style.top.px]="predictiveY">
 </div>
