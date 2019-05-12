@@ -1,11 +1,11 @@
 
-
 <table>
     <colgroup>
       <col *ngFor="let columnWidth of columnWidths" [style.width.px]="columnWidth">
   </colgroup>
   <thead>
     <tr>
+      <th></th>
       <ng-container *ngFor="let key of keys; let c = index;">
           <th>
           {{key}}
@@ -16,6 +16,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let item of items; let r = index">
+      <th>{{r}}</th>
       <ng-container *ngFor="let key of keys; let c = index">
         <td [class.active]="((selectionStartRow <= r && r <= selectionEndRow) || (selectionStartRow >= r && r >= selectionEndRow)) && ((selectionStartCol <= c && c <= selectionEndCol) || (selectionStartCol >= c && c >= selectionEndCol)) && focused" 
           (mousedown)="onMousedown(r,c)"

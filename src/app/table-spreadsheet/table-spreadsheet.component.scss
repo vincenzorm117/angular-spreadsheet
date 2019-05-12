@@ -5,6 +5,7 @@
     outline: 0;
     user-select: none;
     position: relative;
+    overflow: scroll;
 }
 
 :host:focus {
@@ -218,7 +219,7 @@ th{
 }
 
 thead th{
-   padding:0
+   padding:0;
 }
 
 th.active{
@@ -916,4 +917,14 @@ th .sort {
     width: 4px;
     height: 4px;
     border: 1px solid #fff;
+}
+
+
+
+:host.vertical-sticky {
+    thead th{
+        position:sticky;
+        top:0;
+        left:0;
+    }
 }

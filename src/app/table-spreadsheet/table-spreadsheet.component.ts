@@ -31,7 +31,7 @@ export class TableSpreadsheetComponent implements OnInit, OnChanges {
   ngOnInit() {}
 
   ngAfterViewInit() {
-    this.elementRef.nativeElement.querySelectorAll('th').forEach((element: Element) => {
+    this.elementRef.nativeElement.querySelectorAll('thead th').forEach((element: Element) => {
       this.columnWidths.push(element.clientWidth + 40);
     });
     this.elementRef.nativeElement.querySelectorAll('tr').forEach((element: Element) => {
@@ -61,7 +61,11 @@ export class TableSpreadsheetComponent implements OnInit, OnChanges {
 
   ///////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////
-  // 
+  // Special keys
+
+  // @HostListener('document:keydown.shift', ['$event'])
+  // onShift
+
 
   @HostListener('document:keyup', ['$event'])
   onkeyup(event: KeyboardEvent){}
@@ -132,11 +136,11 @@ export class TableSpreadsheetComponent implements OnInit, OnChanges {
 
   updateRanges() {
     if( this.selectionStartCol < this.selectionEndCol ) {
-      this.selectionLowCol = this.selectionStartCol;
-      this.selectionHighCol = this.selectionEndCol;
+      this.selectionLowCol = this.selectionStartCol + 1;
+      this.selectionHighCol = this.selectionEndCol + 1;
     } else {
-      this.selectionLowCol = this.selectionEndCol;
-      this.selectionHighCol = this.selectionStartCol;
+      this.selectionLowCol = this.selectionEndCol + 1;
+      this.selectionHighCol = this.selectionStartCol + 1;
     }
     if( this.selectionStartRow < this.selectionEndRow ) {
       this.selectionLowRow = this.selectionStartRow;
